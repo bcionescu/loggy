@@ -91,10 +91,18 @@ int main(int argc, char *argv[]) {
     // Read the file line by line
     char line[1024];
     int matches_count = 0;
+    int line_number = 0;
+
     while (fgets(line, sizeof(line), file) != NULL ) {
+	line_number++;
+
 	if (regexec(&pattern, line, 0, NULL, 0) == 0) {
-	    printf("%s", line);
-	    matches_count++;
+	    if (flag_n) {
+		printf("%d:%s", line_number, line);
+	    } else {
+		printf("%s", line);
+	    }
+	matches_count++;
 	}
     }
 
