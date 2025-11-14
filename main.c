@@ -2,6 +2,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <regex.h>
+#include <stdlib.h>
 
 FILE *read_file(const char *path) {
     return fopen(path, "r");
@@ -10,10 +11,8 @@ FILE *read_file(const char *path) {
 int is_file_empty(struct stat st) {
     if (st.st_size == 0) {
 	printf("The file provided is empty.\n");
-	return 1;
+	exit(EXIT_FAILURE);
     }
-    
-    return 0;
 }
 
 int main(int argc, char *argv[]) {
