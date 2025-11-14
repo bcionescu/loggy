@@ -74,6 +74,8 @@ int main(int argc, char *argv[]) {
 
     // Compile the regex
     regex_t pattern;
+    regmatch_t match;
+
     int regex_flags = REG_EXTENDED;
 
     if (flag_i) {
@@ -96,12 +98,21 @@ int main(int argc, char *argv[]) {
     while (fgets(line, sizeof(line), file) != NULL ) {
 	line_number++;
 
-	if (regexec(&pattern, line, 0, NULL, 0) == 0) {
-	    if (flag_n) {
-		printf("%d:%s", line_number, line);
+	if (regexec(&pattern, line, 1, &match, 0) == 0) {
+	    if (flag_a) {
+		if (flag_n) printf("%d:", line_number);
+
+		fwrite(line, 1, match.rm_so, stdout);
+
+		printf("\x1b[31m");
+		fwrite(line + match.rm_so, 1, match.rm_eo - match.rm_so, stdout);
+		printf("\x1b[0m");
+
+		printf("%s", line + match.rm_eo);
 	    } else {
+		if (flag_n) printf("%d:", line_number);
 		printf("%s", line);
-	    }
+		}
 	matches_count++;
 	}
     }
