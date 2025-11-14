@@ -7,6 +7,15 @@ FILE *read_file(const char *path) {
     return fopen(path, "r");
 }
 
+int is_file_empty(struct stat st) {
+    if (st.st_size == 0) {
+	printf("The file provided is empty.\n");
+	return 1;
+    }
+    
+    return 0;
+}
+
 int main(int argc, char *argv[]) {
 
     // Take path to log file as argument, as well as something to look for.
@@ -65,10 +74,7 @@ int main(int argc, char *argv[]) {
 
     FILE *file = read_file(path);
 
-    if (st.st_size == 0) {
-	printf("The file provided is empty.");
-	return 1;
-    }
+    is_file_empty(st);
 
     // Compile the regex
     regex_t pattern;
