@@ -39,7 +39,7 @@ int determine_case(int flag_i) {
 int main(int argc, char *argv[]) {
 
     // Take path to log file as argument, as well as something to look for.
-    int flag_i = 0, flag_n = 0, flag_a = 0, flag_m = 0;
+    int flag_i = 0, flag_n = 0, flag_a = 0, flag_m = 0, flag_d = 0;
     const char *regex = NULL;
     const char *path = NULL;
 
@@ -56,6 +56,7 @@ int main(int argc, char *argv[]) {
 		    case 'n': flag_n = 1; break;
 		    case 'a': flag_a = 1; break;
 		    case 'm': flag_m = 1; break;
+		    case 'd': flag_d = 1; break;
 		    default:
 			fprintf(stderr, "Unknown option: %c\n", argv[i][j]);
 			return 1;
@@ -75,7 +76,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!path) {
-	fprintf(stderr, "Usage: %s [-i] [-n] [-a] [-m] [regex] <path-to-log>\n", argv[0]);
+	fprintf(stderr, "Usage: %s [-i] [-n] [-a] [-m] [-d] [regex] <path-to-log>\n", argv[0]);
 	return 1;
     }
 
@@ -134,13 +135,15 @@ int main(int argc, char *argv[]) {
     fclose(file);
     regfree(&pattern);
 
-    // Printf statements used for debugging
-    // printf("Flags: -i=%d -n=%d -a=%d -m=%d\n", flag_i, flag_n, flag_a, flag_m);
-    // printf("Regex: %s\n", regex ? regex : "(none)");
-    // printf("Path: %s\n", path);
-
     if (flag_m == 1) {
 	printf("Matches: %d\n", matches_count);
+    }
+
+    if (flag_d == 1) {
+	printf("\nDebugging info:\n");
+	printf("Flags: -i=%d -n=%d -a=%d -m=%d -d=%d\n", flag_i, flag_n, flag_a, flag_m, flag_d);
+	printf("Regex: %s\n", regex ? regex : "(none)");
+	printf("Path: %s\n", path);
     }
 
     // Check that the file is readable, and does not contain any null bytes, causing
