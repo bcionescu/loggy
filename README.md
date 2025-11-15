@@ -1,5 +1,7 @@
 A log parser written in C.
 
+I'm actively building out and improving the project as I learn C, so please don't mind any glaring issues that might exist with the code :)
+
 To-Do:
 
 - [x] Take a bunch of optional arguments.
