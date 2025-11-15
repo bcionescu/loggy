@@ -44,6 +44,16 @@ void check_matches_flag(int flag_m, int matches_count, const char *regex) {
 
 }
 
+void check_debugging_flag(int flag_i, int flag_n, int flag_a, int flag_m, const char *path, int flag_d, const char *regex) {
+    if (flag_d == 1) {
+	printf("\nDebugging info:\n");
+	printf("Flags: -i=%d -n=%d -a=%d -m=%d -d=%d\n", flag_i, flag_n, flag_a, flag_m, flag_d);
+	printf("Regex: %s\n", regex ? regex : "(none)");
+	printf("Path: %s\n", path);
+    }
+
+}
+
 int main(int argc, char *argv[]) {
 
     int flag_i = 0, flag_n = 0, flag_a = 0, flag_m = 0, flag_d = 0;
@@ -142,12 +152,7 @@ int main(int argc, char *argv[]) {
 
     check_matches_flag(flag_m, matches_count, regex);
 
-    if (flag_d == 1) {
-	printf("\nDebugging info:\n");
-	printf("Flags: -i=%d -n=%d -a=%d -m=%d -d=%d\n", flag_i, flag_n, flag_a, flag_m, flag_d);
-	printf("Regex: %s\n", regex ? regex : "(none)");
-	printf("Path: %s\n", path);
-    }
+    check_debugging_flag(flag_i, flag_n, flag_a, flag_m, path, flag_d, regex);
 
     return 0;
 }
