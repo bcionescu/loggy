@@ -36,10 +36,10 @@ int determine_case(int flag_i) {
     return regex_flags;
 }
 
-void check_matches_flag(int flag_m, int matches_count) {
+void check_matches_flag(int flag_m, int matches_count, const char *regex) {
 
     if (flag_m == 1) {
-	printf("Matches: %d\n", matches_count);
+	printf("\nA total of %d matches were found for the \"%s\" pattern.\n", matches_count, regex);
     }
 
 }
@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
     fclose(file);
     regfree(&pattern);
 
-    check_matches_flag(flag_m, matches_count);
+    check_matches_flag(flag_m, matches_count, regex);
 
     if (flag_d == 1) {
 	printf("\nDebugging info:\n");
