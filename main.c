@@ -166,14 +166,14 @@ int print_matches(FILE *file, regex_t *pattern, int flag_a, int flag_n) {
 
 void check_matches_flag(int flag_m, int matches_count, const char *regex) {
 
-    if (flag_m == 1) {
+    if (flag_m) {
 	printf("\nA total of %d matches were found for the \"%s\" pattern.\n", matches_count, regex);
     }
 
 }
 
 void check_debugging_flag(int flag_i, int flag_n, int flag_a, int flag_m, const char *path, int flag_d, const char *regex) {
-    if (flag_d == 1) {
+    if (flag_d) {
 	printf("\nDebugging info:\n");
 	printf("Flags: -i=%d -n=%d -a=%d -m=%d -d=%d\n", flag_i, flag_n, flag_a, flag_m, flag_d);
 	printf("Regex: %s\n", regex ? regex : "(none)");
