@@ -7,7 +7,7 @@
 void check_if_file_exists(const char *path, struct stat *st);
 void is_file_valid(const char *path, struct stat *st);
 FILE *read_file(const char *path);
-void is_file_empty(struct stat &st);
+void is_file_empty(struct stat *st);
 void compile_regex(regex_t *pattern, const char *regex, int regex_flags);
 int determine_case(int flag_i);
 int print_matches(FILE *file, regex_t *pattern, int flag_a, int flag_n);
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 
     FILE *file = read_file(path);
 
-    is_file_empty(st);
+    is_file_empty(&st);
 
     int regex_flags = determine_case(flag_i);
 
