@@ -176,7 +176,7 @@ void check_debugging_flag(int flag_i, int flag_n, int flag_a, int flag_m, const 
     if (flag_d) {
 	printf("\nDebugging info:\n");
 	printf("Flags: -i=%d -n=%d -a=%d -m=%d -d=%d\n", flag_i, flag_n, flag_a, flag_m, flag_d);
-	printf("Regex: %s\n", regex ? regex : "(none)");
+	printf("Regex: %s\n", regex);
 	printf("Path: %s\n", path);
     }
 

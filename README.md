@@ -19,8 +19,8 @@ I'm actively building out and improving the project as I learn C, so please don'
 - [x] Come up with a bunch of test scenarios and document them.
 - [x] Write documentation for the program in this GitHub repo.
 - [x] Handle an edge case in which the first element of the regex is a hyphen, as that would not work with the current logic.
+- [x] Modify the debugging function to reflect the fact that the regex pattern is mandatory.
 - [ ] Have the code handle multiple matches per line, not just the first.
-- [ ] Modify the debugging function to reflect the fact that the regex pattern is mandatory.
 - [ ] Check if the file contains any null bytes, as that would cause portions of the log file to be silently skipped.
 
 ## Logic
@@ -426,7 +426,7 @@ void check_debugging_flag(int flag_i, int flag_n, int flag_a, int flag_m, const 
     if (flag_d) {
 	printf("\nDebugging info:\n");
 	printf("Flags: -i=%d -n=%d -a=%d -m=%d -d=%d\n", flag_i, flag_n, flag_a, flag_m, flag_d);
-	printf("Regex: %s\n", regex ? regex : "(none)");
+	printf("Regex: %s\n", regex);
 	printf("Path: %s\n", path);
     }
 
