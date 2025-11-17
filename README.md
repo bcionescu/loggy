@@ -476,8 +476,9 @@ Usage: ./loggy [-i] [-n] [-a] [-m] [-d] <regex> <path-to-log>
 ```
 
 ```output
-Usage: ./loggy [-i] [-n] [-a] [-m] [-d] <regex> <path-to-log>
 ```
+
+As a result of a recent patch which fixed a glaring issue in the program logic, this input no longer produces any output. This will have to be addressed in a future patch.
 
 ### No path provided
 
