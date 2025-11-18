@@ -719,7 +719,7 @@ Path: logs/logs.log
 .
 ```
 
-The program now correctly identifies the fact that the second hyphen in the input is part of the regex, and not the beginning of another flag. In the output the `- -` portion of the output is red. Initially, the pogram logic would break when the first character was a hyphen, but now the issue has been resolved.
+The program now correctly identifies the fact that the second hyphen in the input is part of the regex, and not the beginning of another flag. In the output the `- -` portion is red. Initially, the pogram logic would break when the first character was a hyphen, but now the issue has been resolved.
 
 ```input
 ./loggy -dainm "-daim" logs/logs.log
